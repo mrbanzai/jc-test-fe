@@ -1,0 +1,21 @@
+        <div id="sharetools">
+            <h4>Share This</h4>
+                <span style="margin-left:5px;" class='st_sharethis_large' displayText='ShareThis'></span>
+                <span class='st_facebook_large' displayText='Facebook'></span>
+                <span class='st_twitter_large' displayText='Tweet'></span>
+                <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                <span class='st_googleplus_large' displayText='Google +'></span>
+                <span class='st_email_large' displayText='Email'></span>
+        </div>
+
+<?php $this->placeholder('js')->captureStart(); ?>
+
+<script type="text/javascript">
+//sharethis
+var switchTo5x=false;
+var __st_loadLate=true;
+</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "c36338a3-e3fd-442a-8b3d-d2df8fb9103b"});</script>
+
+<?php $this->placeholder('js')->captureEnd(); ?>

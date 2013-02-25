@@ -1,0 +1,19 @@
+<?php
+echo $this->assign('bodyID', 'job')->render('partials/header.phtml');
+echo $this->render('partials/search/search.phtml');
+echo $this->partial('partials/global/flash-messenger.phtml');
+?>
+<div class="wrapper content">
+    <div class="leftcolumn">
+        <?php echo $this->layout()->content; ?>
+    </div>
+    <?php if (!isset($this->showSidebar) || $this->showSidebar): ?>
+    <div class="rightcolumn">
+      <?php echo $this->partial('partials/share-this.phtml'); ?>
+      <?php echo $this->render('partials/related-jobs.phtml'); ?>
+    </div>
+      <?php echo $this->render('partials/category-description.phtml'); ?>
+    <?php endif; ?>
+</div>
+<?php
+echo $this->render('partials/footer.phtml');

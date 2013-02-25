@@ -1,0 +1,21 @@
+        </div>
+<?php
+/*echo $this->partial('partials/footer-links.phtml');-->*/
+// Are these all valid in a mobile context?
+$this->inlineScript()->appendFile('//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js');
+$this->inlineScript()->appendFile('//ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js');
+$this->inlineScript()->appendFile('/js/chosen.jquery.min.js');
+$this->inlineScript()->appendFile($this->baseUrl('/js/plugins.js'));
+$this->inlineScript()->appendFile($this->baseUrl('/js/global.js'));
+//$this->inlineScript()->appendFile($this->baseUrl('/js/admin/facebox.js'));
+
+// Google Analytics code is inserted via inlineScript()
+$this->enableGoogleAnalytics();
+
+echo $this->inlineScript();
+echo $this->placeholder('js');
+// Probably need a mobile version of the error form?
+//echo $this->partial('partials/global/error-form.phtml', array('errors' => !empty($this->errors) ? $this->errors : NULL));
+?>
+    </body>
+</html>

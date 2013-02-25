@@ -1,0 +1,5 @@
+<?php
+echo $this->assign('bodyID', 'search')->render('partials/mobile/search/header.phtml');
+echo $this->render('partials/mobile/search/search.phtml');
+echo $this->layout()->content;
+echo $this->render('partials/mobile/search/footer.phtml');

@@ -1,0 +1,31 @@
+        </div> <!-- close container -->
+<?php
+echo $this->partial('partials/footer-links.phtml');
+
+$this->inlineScript()->appendFile('//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js');
+$this->inlineScript()->appendFile('//ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js');
+$this->inlineScript()->appendFile('/js/chosen.jquery.min.js');
+$this->inlineScript()->appendFile('/js/jquery.stylish-select.js');
+$this->inlineScript()->appendFile($this->baseUrl('/js/plugins.js'));
+$this->inlineScript()->appendFile($this->baseUrl('/js/hoverIntent.js'));
+$this->inlineScript()->appendFile($this->baseUrl('/js/superfish.js'));
+$this->inlineScript()->appendFile($this->baseUrl('/js/global.js'));
+$this->inlineScript()->appendFile($this->baseUrl('/js/admin/facebox.js'));
+
+// Google Analytics code is inserted via inlineScript()
+$this->enableGoogleAnalytics();
+
+echo $this->inlineScript();
+echo $this->placeholder('js');
+echo $this->partial('partials/global/error-form.phtml', array('errors' => !empty($this->errors) ? $this->errors : NULL));
+?>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                //set max height
+                $('#statesel').sSelect({ddMaxHeight: '250px'});
+			jQuery('h3.sf-menu').superfish();
+		
+            });
+        </script>
+    </body>
+</html>

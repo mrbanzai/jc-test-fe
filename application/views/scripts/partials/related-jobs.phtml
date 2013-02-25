@@ -1,0 +1,93 @@
+        <?php if (!empty($this->jobsInCategory) && count( $this->jobsInCategory ) > 1 ): ?>
+        <h4>Other Jobs In This Category</h4>
+            <ul>
+                <?php
+                foreach ($this->jobsInCategory as $job) {
+                    $id = $job['id'];
+                    $name = $job['name'];
+                    $uristub = $job['uristub'];
+                    $location = $job['location'];
+                    $category = $job['category'];
+                    $state = $job['state'];
+
+if( strlen( $name ) > 40 )
+  $name = substr( $name, 0, 40 ) . "...";
+
+                    if ($id !== $this->job['id']) {
+                ?>
+                <li><a href="<?php echo $this->seoFriendlyJobUrl($job); ?>"><?php echo Clean::xss($name . " ($state)"); ?></a></li>
+                <?php
+                    }
+                }
+                ?>
+            </ul>
+        <?php endif; ?>
+
+        <?php if (!empty($this->jobsInState) && count( $this->jobsInState ) > 1 ): ?>
+        <?php $firstJob = current($this->jobsInState); $state = $firstJob['state']; ?>
+        <h4>Other Jobs In <?php echo Clean::xss($state); ?></h4>
+        <ul>
+            <?php
+            foreach ($this->jobsInState as $job) {
+                $id = $job['id'];
+                $name = $job['name'];
+                $uristub = $job['uristub'];
+                $location = $job['location'];
+                $category = $job['category'];
+                $state = $job['state'];
+if( strlen( $name ) > 40 )
+  $name = substr( $name, 0, 40 ) . "...";
+
+                if ($id != $this->job['id']) {
+            ?>
+            <li><a href="<?php echo $this->seoFriendlyJobUrl($job); ?>"><?php echo Clean::xss($name); ?></a></li>
+            <?php
+                }
+            }
+            ?>
+            <?php if (count($this->jobsInState) >= 10): ?>
+            <li><a class="btn_see" href="/location?state=<?php echo urlencode($state); ?>">See all jobs in <?php echo Clean::xss($state); ?> »</a></li>
+            <?php endif; ?>
+        </ul>
+        <?php elseif (!empty($this->jobsInLocation) && count( $this->jobsInLocation ) > 1 ): ?>
+        <h4>Other Jobs At This Location</h4>
+        <ul>
+            <?php
+            foreach ($this->jobsInLocation as $job) {
+                $id = $job['id'];
+                $name = $job['name'];
+                $uristub = $job['uristub'];
+                $location = $job['location'];
+                $category = $job['category'];
+                $state = $job['state'];
+if( strlen( $name ) > 30 )
+  $name = substr( $name, 0, 30 ) . "...";
+
+                if ($id != $this->job['id']) {
+            ?>
+            <li><a href="<?php echo $this->seoFriendlyJobUrl($job); ?>"><?php echo Clean::xss($name . " ($state)"); ?></a></li>
+            <?php
+                }
+            }
+            ?>
+        </ul>
+        <?php endif; ?>
+
+        <?php if (!empty($this->recent)): ?>
+        <div id="current_openings_about">
+            <h4>Recent Job Listings</h4>
+                <ul>
+                    <?php foreach ($this->recent as $recent): 
+$name = Clean::xss($recent['name']);
+if( strlen( $name ) > 30 )
+  $name = substr( $name, 0, 30 ) . "...";
+
+?>
+                    <li><a href="<?php echo $this->seoFriendlyJobUrl($recent); ?>"><?php echo Clean::xss($name . " (". $recent['state'].")"); ?></a></li>
+                    <?php endforeach; ?>
+                    <li>
+                        <a href="/jobs/all" class="btn_see">See All Jobs »</a>
+                    </li>
+                </ul>
+        </div>
+        <?php endif; ?>

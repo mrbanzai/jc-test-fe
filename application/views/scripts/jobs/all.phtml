@@ -1,0 +1,67 @@
+  <?php if (isset($this->results)): ?>
+    <h2>Showing All Jobs</h2>
+        <span id="jobtitleheader">Job Title</span> <span id="locationtitleheadersearch">Location</span> <span id="categorytitleheadersearch">Category</span> <span id="datetitleheadersearch">Date</span>
+        <h2>
+      <?php if (!empty($this->results)): ?>
+    </h2>
+    <ul id="searchresults">
+      <?php
+      $alt = false;
+      foreach ($this->results as $result):
+          $id = $result['id'];
+          $date_posted = $result['date_posted'];
+          $location = $result['location'];
+          $category = $result['category'];
+          $schedule = $result['schedule'];
+      ?>
+      <li<?php echo $alt ? ' class="alt"' : ''; ?>>
+          <?php
+          $url = '/job/details/';
+          if (!empty($location)) $url .= Clean::uristub($location) . '/';
+          if (!empty($category)) $url .= Clean::uristub($category) . '/';
+          $url .= Clean::uristub($result['uristub']) . '/';
+$name =$result['name'];
+if( strlen( $name ) > 35 )
+  $name = substr( $name , 0, 35 ) ."...";
+          ?>
+<div id="all_col_left">
+          <h3 class="job-title"><a href="<?php echo $url; ?>" class="job-title"><?php echo Clean::xss($name); ?></a></h3>
+<!--      <a href="<?php echo $url; ?>" class="right">View Details</a>--> </div>
+
+          <?php if (!empty($schedule)): ?>
+<!--      <span class="schedule"><?php echo Clean::xss($schedule); ?></span>-->
+          <?php endif; ?>
+         <div id="all_col_middle">
+          <?php if (!empty($location)): 
+            $val = Clean::xss($location);
+            $url = '<a href="/jobs/location/' . str_replace("%2F", "_", urlencode($val)) . '">'.$val.'</a>';
+
+?>
+          <span class="location"><?php echo $url; ?></span>
+          <?php endif; ?>
+                            </div>
+                  <div id="all_col_right_mid">
+
+          <?php if (!empty($category)): 
+            $val = Clean::xss($category);
+$url = '<a href="/jobs/' . str_replace("%2F", "_", urlencode($val)) . '">'.str_replace( "/", " / ", $val ).'</a>';
+
+?>
+          <span class="category"><?php echo $url; ?></span>
+          </div>
+          <?php endif; ?>
+                            <div id="all_col_right">
+
+                    <span class="date"><?php echo !empty($date_posted) ? date('m/d/Y', $date_posted) : ''; ?></span></div>
+
+        </li>
+      <?php $alt = !$alt; ?>
+      <?php endforeach; ?>
+      </ul>
+      <?php else: ?>
+      <h3>No search results were found</h3>
+        <p>No search results were found matching your criteria. Please consider loosening your search criteria and try again.</p>
+      <?php endif; ?>
+  <?php else: ?>
+  <?php echo $this->partial('partials/global/flash-messenger.phtml');?>
+  <?php endif; ?>

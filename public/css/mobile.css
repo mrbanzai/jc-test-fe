@@ -1,0 +1,667 @@
+/*mobile.css
+
+mobile stylesheet*/
+
+
+a {
+    color: #01467F;
+}
+.menu-top-menu-container {
+    background-color: transparent;
+    background-image: url("/images/nav_background.png");
+    background-repeat: repeat-x;
+    clear: both;
+    display: block;
+    float: left;
+    margin: 74px auto 6px;
+    padding-left: 121px;
+    width: 1078px;
+}
+
+.menu-top-menu-container li {
+    border-left: 1px solid #444444;
+    display: inline-block;
+    float: none !important;
+    margin: 0 -1px 0 0;
+    padding: 0 27px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.menu-top-menu-container a {
+    color: #CECECE;
+    display: inline;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: normal;
+    letter-spacing: 0;
+    line-height: 39px;
+    text-decoration: none;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 0.7em;
+}
+.tbSelect {
+    margin-bottom: 15px;
+    width: 100%;
+}
+.tbSelect .name {
+    width: 20px;
+}
+.tbSelect .btn {
+    width: 30px;
+}
+.tbSelect td {
+    padding-bottom: 4px;
+}
+.bnInfo {
+    font-size: 0.8em;
+    padding: 3px;
+}
+#divMain {
+    padding: 0 5%;
+}
+div.content {
+    margin: 0 auto;
+}
+div.jobList p a {
+    margin-left: 5px;
+}
+div.jobList p {
+    margin-bottom: 1px;
+    margin-top: 0;
+}
+div.jobList span {
+    margin: 0;
+}
+div.elementCenter {
+    font-size: 1.2em;
+    text-align: center;
+}
+div.elementCenter img {
+    max-width: 241px;
+    width: 95%;
+}
+div.center {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+div.viewSeoSite {
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}
+div.elementRight {
+    text-align: right;
+}
+a.footerLinks {
+    color: #78BEF1;
+    text-decoration: underline;
+}
+a.headerLinks {
+    color: #666666;
+    font-weight: bold;
+    text-decoration: underline;
+}
+a.appLink {
+    display: inline-block;
+    font-size: 1.1em;
+    margin-bottom: 7px;
+}
+div.footer, div.breadcrumbs {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+div.breadcrumbs {
+    margin-top: 5px;
+    text-align: center;
+}
+div.coupleBlurb {
+}
+div.pageContent {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+div.pageContent b {
+    font-size: 1.2em;
+}
+div.pageContent p {
+    margin: 1px 0;
+    padding-bottom: 1px;
+    padding-top: 1px;
+}
+div.coupleBlurb p {
+    margin: 0;
+}
+.iphoneTextBox {
+    font-size: 1em;
+    line-height: 1em;
+    position: static;
+    width: 96%;
+    z-index: -1;
+}
+.textBox {
+    font-size: 1em;
+    line-height: 1em;
+    position: static;
+    z-index: -1;
+}
+input.pagebutton {
+    font-size: 0.8em;
+    padding: 0;
+}
+div.top15 {
+    margin-top: 15px;
+}
+div.top30 {
+    margin-top: 30px;
+}
+input.pageinput, .pageinput {
+    width: 100px;
+}
+.tbSelect .name strong, .sizeSmaller {
+    font-size: 0.6em;
+}
+input.pagebuttonSmaller, #bnLocation {
+    font-size: 0.6em;
+    padding: 0;
+}
+a.jobtitle {
+    font-size: 1.2em;
+    font-weight: 800;
+}
+div.coupleBlurb p input#cbSendFriend {
+    border: medium none !important;
+    display: inline !important;
+    font-size: 1.5em;
+}
+.footerNew {
+    border-top: 1px solid #DBE3E5;
+    font-weight: 800;
+    margin: 0 auto;
+    padding-top: 10px;
+    text-align: center;
+}
+.bigLink {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+}
+.footerButtons, .footerButtons150, .footerButtons150-60 {
+    background: url("../../job-images/mobile/1/btn-1.gif") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #04477C;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    height: 34px;
+    margin: 5px 0 0;
+    padding: 5px 0 0;
+    text-decoration: none !important;
+    width: 160px;
+}
+.footerButtons150 {
+    font-size: 1.6em;
+    padding-top: 10px;
+}
+.footerButtons150-60 {
+    background: url("../../job-images/mobile/1/bg-submit150-60.gif") no-repeat scroll 0 0 transparent;
+    height: 60px;
+    width: 150px;
+}
+h3.marginText {
+    color: #3FAAF8;
+    font-size: 1.5em;
+    margin-bottom: 0.1em;
+    margin-left: 0.7em;
+}
+h3 {
+    font-size: 1.3em;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+a {
+    color: #04477C;
+    text-decoration: none;
+}
+.coupleBlurb input, .coupleBlurb select, .coupleBlurb textarea {
+    border: 1px solid #A4A4A4;
+    color: #000000;
+    display: block;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11px;
+    margin-top: 3px;
+    padding: 4px 0;
+}
+input.btnAction {
+    background-color: #66CCFF;
+    border: 0 none;
+    color: #000000;
+    display: inline;
+    font-size: 13px;
+    font-weight: bold;
+    height: 24px;
+    margin: 13px auto 0;
+    padding: 3px 10px;
+}
+.btn a {
+    border: 0 none;
+    color: #000000;
+    font-size: 13px;
+    font-weight: bold;
+    height: 24px;
+    padding: 3px 10px;
+}
+.btn {
+    background-color: #66CCFF;
+    height: 24px;
+    text-align: center;
+    width: 150px;
+}
+.footerButtons160 {
+    background-color: #66CCFF;
+    border: 0 none;
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+    height: 30px;
+    margin: 20px auto 5px;
+    padding: 7px 20px 8px;
+}
+table.bgtable {
+    background-color: #014B78;
+    border-style: none;
+    border-width: 0;
+    margin: 0;
+    padding: 0;
+}
+table {
+    border-collapse: collapse;
+    border-color: #014B78;
+    border-spacing: 0;
+    border-style: none;
+    border-width: 0;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+table tr td {
+    padding: 2px 0;
+}
+table.bgtable tr td {
+    padding: 0;
+}
+.letters {
+    font-size: 1.5em;
+}
+.letters a {
+    color: #686868;
+}
+.letters a.active {
+    color: #04477C;
+    text-decoration: underline;
+}
+.locations {
+    text-align: left;
+}
+.locations tr th {
+    vertical-align: top;
+    width: 5%;
+}
+.locations tr th h3 {
+    background: none repeat scroll 0 0 silver;
+    color: #FFFFFF;
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    height: 25px;
+    margin-top: 2px;
+    padding: 5px;
+    text-align: center;
+    width: 25px;
+}
+a.alfa {
+    background: none repeat scroll 0 0 silver;
+    color: #FFFFFF;
+    font-size: 1.2em;
+    font-weight: bold;
+    height: 25px;
+    margin-top: 2px;
+    padding: 5px;
+    text-align: center;
+    width: 25px;
+}
+.locations tr td {
+    padding: 0 0 10px 10px;
+    vertical-align: top;
+    width: 85%;
+}
+.locations tr td a {
+    display: block;
+    font-size: 1.2em;
+}
+.boxTopLeft {
+    background: url("../../job-images/mobile/1/border-top.gif") no-repeat scroll left top transparent;
+    height: 9px;
+    padding: 0;
+    width: 2%;
+}
+.boxTopRight {
+    background: url("../../job-images/mobile/1/border-top.gif") no-repeat scroll right top transparent;
+    height: 9px;
+    padding: 0;
+    width: 2%;
+}
+.boxBotLeft {
+    background: url("../../job-images/mobile/1/border-bot.gif") no-repeat scroll left top transparent;
+    height: 9px;
+    padding: 0;
+    width: 2%;
+}
+.boxBotRight {
+    background: url("../../job-images/mobile/1/border-bot.gif") no-repeat scroll right top transparent;
+    height: 9px;
+    padding: 0;
+    width: 2%;
+}
+.boxTop, .boxBot {
+    background: url("../../job-images/mobile/1/bg-top.gif") repeat-x scroll 0 0 transparent;
+    height: 9px;
+    padding: 0;
+    width: 86%;
+}
+.boxBot {
+    background: url("../../job-images/mobile/1/bg-bot.gif") repeat-x scroll 0 0 transparent;
+}
+.box {
+    background: none repeat scroll 0 0 #014B78;
+    color: White;
+    padding: 0 10px;
+}
+label {
+    font-size: 1.1em;
+}
+label.bigger {
+    font-size: 1.5em;
+}
+.btLink {
+    background: none repeat scroll 0 0 transparent !important;
+    border: medium none !important;
+    color: #04477C !important;
+    display: inline !important;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-decoration: none;
+}
+.searchResults {
+    line-height: 16px;
+    text-align: left;
+}
+.searchResults a {
+    text-decoration: underline;
+}
+.searchResults th {
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: left;
+}
+.searchResults tr td {
+    border-top: 1px dotted silver;
+    vertical-align: top;
+    width: 80%;
+}
+.searchResults a.jobTitles {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+p.marginText {
+    color: #000000;
+    padding: 0 0 1em 1.4em;
+}
+p.marginText em {
+    font-style: italic;
+    font-weight: bold;
+}
+div.coupleBlurb h3 {
+    font-size: 1.7em !important;
+    font-weight: normal !important;
+    margin-left: 0 !important;
+}
+p.posted {
+}
+a.activePaging {
+    color: Black;
+}
+a.activePaging, a.active {
+    font-size: 1.1em;
+    margin: 0.35em;
+}
+div.pageContent p.underline {
+    border-bottom: 1px solid #DBE3E5;
+    padding-bottom: 15px;
+}
+div.footerNew table tr.underlineLink a {
+    text-decoration: underline !important;
+}
+select.ddl {
+    border: 0.4em double #7B9CBD;
+    padding: 0;
+}
+#lblLocation, #lblCategory, #lblKeyword {
+    color: #3FA9F3;
+    font-size: 1.5em !important;
+}
+img.bull {
+    margin-bottom: 2px;
+    margin-left: 1px;
+}
+.paddingTopInButton {
+    padding-top: 8px;
+}
+.paddingLeftInButton {
+    padding-left: 20px;
+    width: 140px;
+}
+div.header a {
+    border-bottom: 1px solid #D6D6D6;
+    border-top: 1px solid #D6D6D6;
+    font-weight: 800;
+    padding: 0.3em 0;
+    text-align: center;
+}
+div.header a {
+    border-bottom: 1px solid #D6D6D6;
+    border-top: 1px solid #D6D6D6;
+    font-weight: 800;
+    padding: 0.3em 0;
+    text-align: center;
+}
+table.viewSeoSite {
+    font-weight: bold;
+}
+span.searchtitle {
+    letter-spacing: -1px;
+}
+p.searchtitle {
+    margin: 0;
+}
+p.searchKeyword {
+    margin: 0;
+    padding-right: 20px;
+    width: 98%;
+}
+div.search {
+    border: 1px solid #BDBDBD;
+    padding: 14px 9px;
+    text-align: left;
+}
+div.search p {
+    margin: 0;
+}
+div.search p input#cbSendFriend {
+    border: medium none !important;
+    display: inline !important;
+    font-size: 1.5em;
+}
+.search p input {
+}
+.search select, .search textarea {
+    border: 4px double #979797;
+    color: #000000;
+    display: block;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11px;
+    margin-bottom: 10px;
+    margin-top: 3px;
+}
+div.search h3 {
+    font-size: 1.7em !important;
+    font-weight: normal !important;
+    margin-left: 0 !important;
+}
+.search #tbKeyword {
+    border-width: 1px;
+    width: 99.5%;
+}
+.colorGrey {
+    color: #5D5D5D;
+}
+.colorBlue {
+    color: #29ACFA;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.breadcrumb {
+    padding-top: 5px;
+    text-align: center;
+}
+.breadcrumb a {
+    color: #78BEF1;
+    text-decoration: underline;
+}
+.locationList {
+    font-size: 13px;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.locationList li {
+    padding: 3px 0;
+}
+.locationList a {
+}
+.EmailMeForm {
+}
+.EmailMeForm .formLine {
+    clear: both;
+    overflow: auto;
+    padding-bottom: 6px;
+}
+.EmailMeForm .formLine label {
+    float: left;
+    text-align: right;
+    width: 25%;
+}
+.EmailMeForm .formLine .textBox {
+    background: none repeat scroll 0 0 white;
+    border: 1px solid silver;
+    float: right;
+    padding: 3px 1%;
+    width: 70%;
+}
+.EmailMeForm .formLine select.textBox {
+    padding: 3px 0;
+    width: 72%;
+}
+.formCheckbox {
+    margin-left: 27%;
+}
+.searchSubmitWrapper {
+    text-align: center;
+}
+.content .job-container, .content .job-container span, .content .job-container p, .content .job-container div, .content .job-container b, .content .job-container strong, .content .job-container font {
+    color: #000000 !important;
+    font-family: Arial,Helvetica,sans-serif !important;
+    font-size: 10pt !important;
+}
+
+body {
+    font-family: Lucida Grande,Verdana,Arial,sans-serif;
+    font-size: 75%;
+    line-height: 1.5;
+}
+
+#toplinks{
+	border-bottom: 1px solid #D6D6D6;
+    border-top: 1px solid #D6D6D6;
+    font-weight: 800;
+    text-align: center;
+}
+
+#toplinks {
+	margin-left:auto;
+	margin-right: auto;
+}
+
+.mobileonly {
+	display:inline;
+	background-color:#568cbc !important;
+}
+
+#searchblock.mobileonly {
+	background-color:#568cbc !important;
+}
+.nomobile {
+	display:none;
+}
+
+.job-actions a {
+	background-color: #FFF;
+	color: #01467F;
+}
+
+#location {
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+	text-align:center;
+}
+#listings {
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+	text-align:center;
+}
+#category {
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+    margin-left: 0 !important;
+	text-align:center;
+}
+.searchbox_header_page {
+    margin-left: auto;
+	margin-right: auto;
+    width: 320px;
+}
+.pagebox {
+    height: 33px;
+}
+#pagesearch {
+    margin-left: auto;
+    margin-right: auto;
+    width: 320px;
+	background-color: #568CBC;
+}
+.searchbox_header_page h3 a{
+	color: #FFFFFF !important;
+    font-family: "Lucida Sans Unicode","Lucida Grande",sans-serif !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    margin-bottom: 0 !important;
+    padding-top: 12px;
+	text-align:center !important;
+}

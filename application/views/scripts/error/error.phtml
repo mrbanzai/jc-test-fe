@@ -1,0 +1,54 @@
+<?php echo $this->render('partials/search/header.phtml'); ?>
+<?php echo $this->render('partials/search/search.phtml'); ?>
+      <div class="wrapper content">
+        <div class="leftcolumn">
+          <h1><?php echo $this->title; ?></h1>
+          <p><?php echo $this->message; ?></p>
+
+          <?php if ($this->code == 404): ?>
+          <div><a href="/">Return Home</a></div>
+          <div><a href="javascript:history(-1);">Go Back To The Previous Page</a></div>
+          <div class="mbottom40"><a href="/">Get Help</a></div>
+          <?php endif; ?>
+
+          <?php if ($this->environment != 'production'): ?>
+
+              <?php
+              if (!empty($this->errors->exception)):
+                  $exception = $this->errors->exception;
+              ?>
+
+                  <h3>Exception information:</h3>
+                  <p>
+                      <b>Message:</b> <?php echo $exception->getMessage(); ?>
+                  </p>
+
+                  <h3>Stack trace:</h3>
+                  <pre><?php echo $exception->getTraceAsString(); ?>
+                  </pre>
+                  <div>
+                    <h3>
+                      Detailed Stack Trace <a href="#" class="toggle">( + )</a>
+                    </h3>
+                    <div id="toggleStack" style="display:none">
+                      <?php foreach ($exception->getTrace() as $s): var_dump($s); endforeach; ?>
+                    </div>
+                  </div>
+
+                  <h3>Request Parameters:</h3>
+                  <pre><?php var_dump($this->request->getParams()); ?></pre>
+              <?php
+              endif;
+              ?>
+              <?php $this->placeholder('js')->captureStart(); ?>
+              <script type="text/javascript">
+              $('.toggle').click(function() {
+                  $('#toggleStack').slideToggle();
+              });
+              </script>
+              <?php $this->placeholder('js')->captureEnd(); ?>
+          <?php endif; ?>
+          </div>
+        </div>
+      </div>
+<?php echo $this->render('partials/search/footer.phtml'); ?>

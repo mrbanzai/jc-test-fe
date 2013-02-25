@@ -1,0 +1,22 @@
+<p>
+Emailing <strong><?php echo $this->jobTitle; ?></strong> to a friend
+</p>
+<form method="post">
+    <p>
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" maxlength="40" />
+    </p>
+    <p>
+        <label for="email">Friend's Email Address:</label>
+        <input type="text" id="email" name="email" /><br/>
+        Enter email addresses separated by commas
+    </p>
+    <p>
+        <label for="addl-comments">Additional Comments:</label>
+        <textarea name="addl-comments" id="addl-comments"></textarea>
+    </p>
+    <input type="submit" name="submit" value="Send" />
+</form>
+<p>
+    <a href="<?php echo $this->jobLink; ?>">Back to Job Listing</a>
+</p>

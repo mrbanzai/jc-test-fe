@@ -1,0 +1,93 @@
+    <?php if (isset($this->results)): ?>
+        <h2><?php echo Clean::deuristub($this->location); ?></h2><h5>Showing <strong><?php echo count($this->results); ?></strong> matching jobs</h5>
+        
+   <span id="jobtitleheader">Job Title</span> <span id="locationtitleheader">Location</span> <span id="datetitleheader">Date</span>
+        <?php if (!empty($this->results)): ?>
+        <ul id="searchresults">
+            <?php
+            $alt = false;
+            foreach ($this->results as $result) {
+                $date_posted = $result['date_posted'];
+                $location = $result['location'];
+                $category = $result['category'];
+                $schedule = $result['schedule'];
+
+                // fix the date
+                $date_posted = (int) trim($date_posted);
+            ?>
+                <li<?php echo $alt ? ' class="alt"' : ''; ?>>
+                   
+                    <?php
+                    $url = '/job/details/';
+                    if (!empty($location)) $url .= Clean::uristub($location) . '/';
+                    if (!empty($category)) $url .= Clean::uristub($category) . '/';
+                    $url .= Clean::uristub($result['uristub']) . '/';
+                    ?>
+                     <div class="category_col_left"> <h3 class="job-title"><a href="<?php echo $url; ?>" class="job-title"><?php echo Clean::xss($result['name']); ?></a></h3>
+<!--                <a href="<?php echo $url; ?>" class="right">View Details</a>-->
+</div>
+                    <?php if (!empty($schedule)): ?>
+                    <span class="schedule"><?php echo $result['schedule']; ?></span>
+                    <?php endif; ?>
+
+                <div id="category_col_middle">    <?php if (!empty($location)): ?>
+                    <span class="location"><?php echo $result['location']; ?></span>
+                    <?php endif; ?></div>
+                        <div class="category_col_right">
+                  <span class="date"><?php echo !empty($date_posted) ? date('m/d/Y', $date_posted) : ''; ?></span></div>
+                </li>
+            <?php
+                $alt = !$alt;
+            }
+            ?>
+        </ul>
+        <?php else: ?>
+        <p>No jobs currently exist for the specified location.</p>
+        <?php endif; ?>
+    <?php else: ?>
+    <?php
+        if (!empty($this->locations)) {
+            $states = array();
+            foreach ($this->locations as $l) {
+                $states[$l["state"]][] = $l;
+            }
+            ksort( $states );
+    ?>
+    <h2 style="float:left">Job Locations</h2>
+    <select id='statesel' name='statesel' onChange='if( this.selectedIndex>0) {document.location.href="/location?state=" + this.options[this.selectedIndex].value;}'>
+        <option value=''>Filter By State</option>
+        <option value=''>All States</option>
+        <?php
+	    $first ="";
+        foreach( $states as $s=>$throwaway ) {
+            $curr = ($s == $this->selectedState)?"SELECTED":"";
+            echo( "<option $curr value='$s'>".$this->allstates[$s]."</option>"  );
+        }
+        ?>
+    </select>
+    <ul style="clear:both;" class="alternating">
+        <?php
+        foreach ($states as $s=>$locations):
+            if($this->selectedState && $s != $this->selectedState )
+                continue;
+        ?>
+        <?php $alt = false; ?>
+	    <li class='alt'><?php echo( $this->allstates[$s] ); ?><a name='<?php echo $s; ?>'></a></li>
+        <?php foreach ($locations as $location): ?>
+        <li<?php echo $alt ? ' class="alt"' : ''; ?>>
+            <?php $url = '/jobs/location/' . urlencode($location['location']) . '/'; ?>
+            <a href="<?php echo $url; ?>"><?php echo Clean::xss($location['city'])  . " (" . $location["count"] . ")"; ?></a>
+        </li>
+	    <?php //$alt = !$alt; ?>
+        <?php endforeach; ?>
+        <?php endforeach; ?>
+    </ul>
+    <?php
+        } else {
+    ?>
+            <h3>No locations currently exist</h3>
+            <p>It does not appear as though any jobs currently exist.</p>
+    <?php
+        }
+    ?>
+    <?php endif; ?>

@@ -1,0 +1,78 @@
+    <?php if (isset($this->results)): ?>
+        <h2><?php echo Clean::deuristub($this->category); ?> Jobs</h2>
+<h5>Showing <strong><?php echo count($this->results); ?></strong> matching jobs</h5>
+        
+        <span id="jobtitleheader">Job Title</span> <span id="locationtitleheader">Location</span> <span id="datetitleheader">Date</span>
+        
+<?php if (!empty($this->results)): ?>
+        <ul id="searchresults">
+
+            <?php
+            $alt = false;
+            foreach ($this->results as $result):
+                $date_posted = $result['date_posted'];
+                $location = $result['location'];
+                $category = $result['category'];
+                $schedule = $result['schedule'];
+
+                // fix the date
+                $date_posted = (int) trim($date_posted);
+            ?>
+                <li<?php echo $alt ? ' class="alt"' : ''; ?>>
+                    <?php
+                    $url = '/job/details/';
+                    if (!empty($location)) $url .= Clean::uristub($result['location']) . '/';
+                    if (!empty($category)) $url .= Clean::uristub($result['category']) . '/';
+                    $url .= $result['uristub'] . '/';
+                    ?>
+                    <div class="category_col_left">
+                      <h3 class="job-title"><a class="job-title" href='<?php echo $url; ?>'><?php echo $result['name']; ?></a></h3>
+<!--                    <a href="<?php echo $url; ?>" class="right">View Details</a>-->
+				  </div>
+                    <?php if (!empty($schedule)): ?>
+<!--                    <span class="schedule"><?php echo $result['schedule']; ?></span>-->
+                    <?php endif; ?>
+<div id="category_col_middle"><?php if (!empty($location)): ?>
+                    <span class="location"><?php echo $result['location']; ?></span>
+                    <?php endif; ?>
+                  </div>
+                  <div class="category_col_right">
+                  <span class="date"><?php echo !empty($date_posted) ? date('m/d/Y', $date_posted) : ''; ?></span></div>
+                </li>
+                <?php $alt = !$alt; ?>
+            <?php endforeach; ?>
+        </ul>
+        <?php else: ?>
+        <p>No jobs currently exist in the specified category.</p>
+        <?php endif; ?>
+    <?php else: ?>
+        <?php if (!empty($this->categories)): ?>
+            <h2>Job Categories</h2>
+            <ul class="alternating">
+                <?php $alt = false; ?>
+                <?php foreach ($this->categories as $category):
+if( !$category["count"] )
+  continue;
+?>
+                <li<?php echo $alt ? ' class="alt"' : ''; ?>>
+
+                    <?php
+                    $url = '/jobs/' . str_replace("%2F", "_", urlencode($category['category'])) . '/';
+                    ?>
+                    <a href="<?php echo $url; ?>"><?php echo Clean::xss($category['category']); ?> (<?php echo $category["count"]; ?>)</a>
+                </li>
+                <?php $alt = !$alt; ?>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <h3>No categories currently exist</h3>
+            <p>It does not appear as though any jobs currently exist.</p>
+        <?php endif; ?>
+    <?php endif; ?>
+
+<?php $this->placeholder('js')->captureStart(); ?>
+<script type="text/javascript">
+$(function() {
+    $('a[rel=facebox]').facebox();
+});
+<?php $this->placeholder('js')->captureEnd(); ?>

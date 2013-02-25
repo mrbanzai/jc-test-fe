@@ -1,0 +1,16 @@
+<?php
+echo $this->assign('bodyID', 'search')->render('partials/search/header.phtml');
+echo $this->render('partials/search/search.phtml');
+?>
+<div class="wrapper content">
+    <div class="leftcolumn">
+        <?php echo $this->layout()->content; ?>
+    </div>
+    <div class="rightcolumn">
+      <?php echo $this->partial('partials/share-this.phtml'); ?>
+      <?php echo $this->render('partials/related-jobs.phtml'); ?>
+    </div>
+      <?php echo $this->render('partials/category-description.phtml'); ?>
+</div>
+<?php
+echo $this->render('partials/search/footer.phtml');

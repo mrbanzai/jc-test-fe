@@ -1,0 +1,22 @@
+<?php
+echo $this->assign(array(
+        'bodyID' => 'home',
+        'containerClass' => ''
+    ))->render('partials/home/header.phtml');
+	
+echo $this->render('partials/search/search.phtml');?>
+	
+    <div class="wrapper content">
+    <div class="leftcolumn">
+        <?php echo $this->layout()->content; ?>
+    </div>
+    <?php if (!isset($this->showSidebar) || $this->showSidebar): ?>
+    <div class="rightcolumn">
+      <?php echo $this->partial('partials/share-this.phtml'); ?>
+      <?php echo $this->render('partials/home-side.phtml'); ?>
+    </div>
+    <?php endif; ?>
+</div>
+    
+<?php
+echo $this->render('partials/footer.phtml');

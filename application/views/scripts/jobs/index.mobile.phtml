@@ -1,0 +1,104 @@
+<?php
+    /*
+    $use_dynamic_number = ($this->job['dynamic_phone'] == 1 && !empty($this->theme['default_phone']));
+    $number = ($this->job['dynamic_phone'] == 1) ? $this->theme['default_phone'] : ((!empty($this->job['apply_phone'])) ? $this->job['apply_phone'] : $this->theme['default_phone']);
+    */
+?>
+    <div class="job-actions">
+        <script type="IN/Apply"
+          <?php if (isset($this->overrideLinkedInCompanyID) && $this->overrideLinkedInCompanyID): ?>
+          data-companyId="<?php echo $this->overrideLinkedInCompanyID; ?>"
+          <?php else: ?>
+          data-companyName="<?php echo $this->job['company']; ?>"
+          <?php endif; ?>
+          data-jobTitle="<?php echo $this->job['name']; ?>"
+          data-email="<?php echo $this->linkedInApplyEmail; ?>">
+        </script>
+        <p>
+            <a href="/job/<?php echo $this->job['id']; ?>/email-me" class="btn">Send to My Email</a>
+        </p>
+        <p>
+            <a href="/job/<?php echo $this->job['id']; ?>/email" class="btn">Email a Friend</a>
+        </p>
+    </div>
+
+    <?php if($this->hasSuccess) echo $this->partial('partials/global/flash-messenger.phtml'); ?>
+    <?php if (!empty($this->job)): ?>
+        <h1 class="left job-title"><?php echo Clean::xss($this->job['name']); ?></h1>
+        <?php if (!empty($this->job['schedule'])): ?>
+        <span class="left schedule"><?php echo Clean::xss($this->job['schedule']); ?></span>
+        <?php endif; ?>
+
+        <?php if (!empty($this->job['location'])): ?>
+        <div class="location"><?php echo Clean::xss($this->job['location']); ?></div>
+        <?php endif; ?>
+
+        <section class="job-details">
+            <?php if (!empty($this->job['description'])): ?>
+            <h3 class="heading">Position Summary</h3>
+            <div class="description">
+            <?php
+            $description = str_replace(
+                array('&nbsp;', '<DIV></DIV>', '<DIV></SPAN></DIV>', '<div></div>'),
+                array('', '<br />'),
+                $this->job['description']
+            );
+            $description = str_replace('<br /><br />', '<br />', $description);
+
+            echo $description;
+
+            ?>
+            </div>
+            <?php endif; ?>
+
+            <?php if (!empty($this->job['qualifications'])): ?>
+            <h3 class="heading">Qualifications</h3>
+            <div class="qualifications">
+                <?php
+                $qualifications = str_replace(
+                    array('&nbsp;', '<DIV></DIV>', '<DIV></SPAN></DIV>', '<div></div>'),
+                    array('', '<br />'),
+                    $this->job['qualifications']
+                );
+                $qualifications = str_replace('<br /><br />', '<br />', $qualifications);
+                echo $qualifications;
+
+                ?>
+            </div>
+            <?php endif; ?>
+
+            <?php
+            if (!empty($this->job['shift'])
+                || !empty($this->job['schedule'])
+                || !empty($this->job['department'])):
+            ?>
+                <h3 class="heading">Other Information</h3>
+                <ul>
+                    <?php if (!empty($this->job['department'])): ?>
+                    <li><strong>Department:</strong> <?php echo Clean::xss($this->job['department']); ?></li>
+                    <?php endif; ?>
+                    <?php if (!empty($this->job['shift'])): ?>
+                    <li><strong>Shift:</strong> <?php echo Clean::xss($this->job['shift']); ?></li>
+                    <?php endif; ?>
+                    <?php if (!empty($this->job['schedule'])): ?>
+                    <li><strong>Schedule:</strong> <?php echo Clean::xss($this->job['schedule']); ?></li>
+                    <?php endif; ?>
+                </ul>
+            <?php
+            endif;
+            ?>
+
+        </section>
+
+    <?php else: ?>
+    <h3 class="heading">This Job No Longer Exists</h3>
+    <p>We're sorry, but it appears as though the job you are looking for
+    no longer exists.</p>
+    <?php endif; ?>
+
+<?php $this->placeholder('js')->captureStart(); ?>
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+      api_key: <?php echo $this->linkedInAPIKey; ?>
+</script>
+<?php /*if($use_dynamic_number && !empty($this->theme['dynamic_phone_tracking'])) echo $this->theme['dynamic_phone_tracking'];*/ ?>
+<?php $this->placeholder('js')->captureEnd(); ?>

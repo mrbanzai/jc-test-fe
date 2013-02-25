@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+	<head>
+		<?php
+		$title = !empty($this->theme['company']) ? $this->theme['company'] . ' | Jobs' : 'Apollo Group Careers | Jobs';
+		if (!empty($this->title)) {
+			foreach ((array) $this->title as $t) {
+				$title .= ' | ' . Clean::xss($t);
+			}
+		}
+		?>
+		<meta charset="utf-8" />
+		<meta content="<?php echo $this->csrfToken(); ?>" name="csrf-token" />
+		<meta name="description" content="<?php echo !empty($this->description) ? $this->escape(substr($this->description, 0, 155)) : ''; ?>" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="" />
+		<meta property="og:image" content="<?php echo !empty($this->theme['logo']) ? $this->escape($this->serverUrl() . $this->theme['logo']) : ''; ?>" />
+		<meta property="og:site_name" content="<?php echo !empty($this->theme['company']) ? $this->escape($this->theme['company']) : 'JobCastle'; ?>" />
+		<meta property="og:title" content="<?php echo $title; ?>" />
+		<meta property="og:description" content="<?php echo !empty($this->description) ? $this->escape(substr($this->description, 0, 155)) : ''; ?>" />
+		<meta property="fb:admins" content="<?php echo !empty($this->og['admin']) ? $this->escape($this->og['admin']) : ''; ?>" />
+		<?php
+		$this->headTitle((!empty($this->theme['company']) ? $this->theme['company'] . ' | Jobs' : 'Apollo Group Careers'), 'APPEND')->setSeparator(' | ');
+		if (!empty($this->title)) {
+			foreach ((array) $this->title as $title) {
+				$this->headTitle()->append($title);
+			}
+		}
+		echo $this->headTitle();
+
+		$this->headLink()->prependStylesheet('/css/admin/black/facebox.css');
+        $this->headLink()->prependStylesheet('/css/chosen.css');
+		$this->headLink()->prependStylesheet('/css/theme.css');
+		$this->headLink()->prependStylesheet('/css/global.css');
+		$this->headLink()->prependStylesheet('/css/superfish.css');
+
+
+		echo $this->headLink();
+		echo $this->placeholder('css');
+		echo $this->headScript();
+		?>
+        <link href="/css/stylish-select.css" type="text/css" rel="stylesheet">
+        
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26483445-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+	</head>
+	<body id="<?php echo $this->bodyID; ?>">
+		<div id="<?php echo !empty($this->containerClass) ? $this->containerClass : 'container'; ?>">
+			<div class="header">
+<a id="homelink" href="http://www.apollo.edu" target="_blank" alt="Apollo home"></a>
+			  <div>
+					<div class="menu-top-menu-container">
+						<ul id="menu-top-menu" class="menu">
+							<li id="menu-item-20" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-20"><a href="<?php echo $this->serverUrl(); ?>">Home</a></li>
+							<li id="menu-item-21" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-21"><a href="http://www.apollogrp.edu/careers/working-at-apollo-group" target="_blank">Working at Apollo Group</a></li>
+							<li id="menu-item-22" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-22"><a href="http://www.apollogrp.edu/careers/our-values" target="_blank">Our Values</a></li>
+							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-22"><a href="http://www.apollogrp.edu/careers/benefits" target="_blank">Benefits</a></li>
+							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-22"><a href="http://facultyjobs-phoenix.com/" target="_blank" >Search Faculty Jobs</a></li>
+						</ul>
+                           <span class="right">
+<a class="twitter_sm" href="https://twitter.com/apollogroupjobs" target="_blank"></a>
+<a class="linkedin_sm" href="http://www.linkedin.com/company/apollo-group" target="_blank"></a>
+               
+</span>
+					</div>
+                   
+                    
+                    <div id="headersearch">
+    <div class="wrapper">
+    <div id="rightsearch">
+      <form method="post" action="/search/" class="searchbar <?php echo !empty($this->searchFormClass) ? $this->searchFormClass : null; ?>">
+        <input type="text" name="search" id="q" placeholder="Enter a job title" maxlength="32" />
+        <button type="submit" id="submit" value="search"><div id="mobileonly"></div></button>
+      </form>
+      <?php if (!isset($this->showSearchButtons) || $this->showSearchButtons): ?>
+      </div>
+      <div class="headersearch" id="pagesearch">
+        <div class="searchbox_header_page pagebox" id="category">
+          <ul class='sf-menu'><li><h3><a href="/category">Search Jobs by Category »</a></h3>
+<ul>
+<?php 
+       $dropEntry = "";
+$count = 0;
+          foreach ((array)$this->dropdownCategories as $dropdownCategories) {
+	    $count++;
+	    if( $count >= 6 )
+	      continue;
+            $val = Clean::uristub($dropdownCategories['category']);
+            $dropEntry .= '<li><a href="/jobs/' . str_replace("%2F", "_", urlencode($dropdownCategories['category'])) . '">';
+            $dropEntry .= Clean::xss($dropdownCategories['category']);
+            $dropEntry .= " Jobs</li>\n";
+          }
+echo( $dropEntry );
+echo( "<li><a href='/category'><b>View All Categories</b></a></li>" );
+?>
+</ul>
+</li>
+</ul>
+        </div>
+        <div class="searchbox_header_page pagebox" id="location">
+<ul class='sf-menu'><li>          <h3><a href="/location">Search Jobs by Location »</a></h3>
+<ul>
+<?php 
+       $dropEntry = "";
+$count = 0;
+          foreach ((array)$this->dropdownLocations as $dropdownLocations) {
+	    $count++;
+	    if( $count >= 6 )
+	      continue;
+            $val = Clean::uristub($dropdownLocations['location']);
+            $dropEntry .= '<li><a href="/jobs/location/' . str_replace("%2F", "_", urlencode($dropdownLocations['location'])) . '">';
+            $dropEntry .= Clean::xss($dropdownLocations['location']);
+            $dropEntry .= " Jobs</li>\n";
+          }
+echo( $dropEntry );
+echo( "<li><a href='/location'><b>View All Locations</b></a></li>" );
+?>
+</ul>
+</li>
+</ul>
+
+            
+        </div>
+        <div class="searchbox_header_page pagebox" id="listings">
+          <h3><a href="/jobs/all">Search All Apollo Jobs »</a></h3>
+        </div>
+      </div>
+      <?php endif; ?>
+    </div>
+  </div>
+				</div>
+                
+			</div>
+            
+          

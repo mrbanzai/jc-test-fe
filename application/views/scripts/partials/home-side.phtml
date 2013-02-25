@@ -1,0 +1,49 @@
+ <h4><a href="/category">Search Jobs By Category</a></h4>
+<?php if (!empty($this->categories)): ?>
+      <ul>
+          <?php foreach ($this->categories as $category): ?>
+          <?php $underscoreCat = str_replace("%2F", "_", urlencode($category['category'])); ?>
+          <li><a href="/jobs/<?php echo $underscoreCat; ?>"><?php echo Clean::xss($category['category']); ?> (<?php echo number_format($category['count'], 0); ?>)</a></li>
+          <?php endforeach; ?>
+        <li>
+              <a href="/category/" class="btn_see">View All Job Categories »</a>
+          </li>
+          
+      </ul>
+      <?php else: ?>
+      <p>No categories exist.</p>
+      <?php endif; ?>
+<h4><a href="/location">Search Jobs By Location</a></h4>
+<?php if (!empty($this->locations)): ?>
+        <ul>
+            <?php foreach ($this->locations as $location): ?>
+            <li><a href="/jobs/location/<?php echo urlencode($location['location']); ?>"><?php echo $location['location']; ?> (<?php echo number_format($location['count'], 0); ?>)</a></li>
+            <?php endforeach; ?>
+          <li>
+                <a href="/location/" class="btn_see">View All Job Locations »</a>
+            </li>
+        </ul>
+        <?php else: ?>
+        <p>No locations exist.</p>
+        <?php endif; ?>
+   
+
+        <?php if (!empty($this->recent)): ?>
+        <div id="current_openings_about">
+        
+            <h4><a href="/jobs/all">Search All Recent Jobs</a></h4>
+                <ul>
+                    <?php foreach ($this->recent as $recent): 
+$name = Clean::xss($recent['name']);
+if( strlen( $name ) > 30 )
+  $name = substr( $name, 0, 30 ) . "...";
+
+?>
+                    <li><a href="<?php echo $this->seoFriendlyJobUrl($recent); ?>"><?php echo Clean::xss($name . " (". $recent['state'].")"); ?></a></li>
+                    <?php endforeach; ?>
+                    <li>
+                        <a href="/jobs/all" class="btn_see">View All Jobs »</a>
+                    </li>
+                </ul>
+        </div>
+        <?php endif; ?>
